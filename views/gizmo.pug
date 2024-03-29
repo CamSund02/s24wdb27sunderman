@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  - var results = [{ gizmo_name: "drone", functionality: "Fly around and take pictures", price: 500 },{ gizmo_name: "camera", functionality: "Take nice pictures", price: 2000 },{ gizmo_name: "electric skateboard", functionality: "Ride around", price: 300 }]
+
+  .container-fluid
+    .row
+      each result in results
+        .col-lg-4.col-md-6.col-sm-12
+          .search-result
+            h3 #{result.gizmo_name}
+            p Functionality: #{result.functionality}
+            p Price: $#{result.price}
