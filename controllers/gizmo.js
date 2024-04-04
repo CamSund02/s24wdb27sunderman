@@ -9,6 +9,20 @@ exports.gizmo_list = async function(req, res) {
         res.send(`{"error":${err}}`);
     }
 };
+
+// VIEWS
+// Handle a show all view
+exports.gizmo_view_all_Page = async function(req, res) {
+    try{
+    theGizmos = await Gizmo.find();
+    res.render('costumes', { title: 'Costume Search Results', results: theGizmos });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };
+
 // for a specific Gizmo.
 exports.gizmo_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Gizmo detail: ' + req.params.id);
