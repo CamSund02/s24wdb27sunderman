@@ -1,7 +1,13 @@
 var Gizmo = require('../models/gizmo');
 // List of all Gizmos
-exports.gizmo_list = function(req, res) {
-res.send('NOT IMPLEMENTED: Gizmo list');
+exports.gizmo_list = async function(req, res) {
+    try {
+        theGizmos = await Gizmo.find();
+        res.send(theGizmos);
+    } catch(err) {
+        res.status(500);
+        res.send(`{"error":${err}}`);
+    }
 };
 // for a specific Gizmo.
 exports.gizmo_detail = function(req, res) {
