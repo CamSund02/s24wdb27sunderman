@@ -15,7 +15,7 @@ exports.gizmo_list = async function(req, res) {
 exports.gizmo_view_all_Page = async function(req, res) {
     try{
     theGizmos = await Gizmo.find();
-    res.render('costumes', { title: 'Gizmo Search Results', results: theGizmos });
+    res.render('gizmo', { title: 'Gizmo Search Results', results: theGizmos });
     }
     catch(err){
     res.status(500);
