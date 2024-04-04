@@ -36,9 +36,9 @@ exports.gizmo_create_post = async function(req, res) {
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
     // {"gizmo_type":"goat", "cost":12, "size":"large"}
-    document.gizmo_type = req.body.gizmo_name;
-    document.cost = req.body.price;
-    document.size = req.body.functionality;
+    document.gizmo_name = req.body.gizmo_name;
+    document.price = req.body.price;
+    document.functionality = req.body.functionality;
     try{
     let result = await document.save();
     res.send(result);
