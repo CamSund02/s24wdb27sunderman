@@ -10,7 +10,7 @@ module.exports = router;
  GET gizmo page. 
 router.get('/', function(req, res, next) {
   res.render('gizmo', { title: 'Search Results Gizmo' });
-});
+})
 
 module.exports = router;
 */

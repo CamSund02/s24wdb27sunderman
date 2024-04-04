@@ -23,9 +23,16 @@ exports.gizmo_view_all_Page = async function(req, res) {
     }
    };
 
-// for a specific Gizmo.
-exports.gizmo_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: Gizmo detail: ' + req.params.id);
+// for a specific Gizmo.// for a specific gizmo.
+exports.gizmo_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+        result = await Gizmo.findById( req.params.id)
+        res.send(result)
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
 };
 // Handle Gizmo create on POST.
 // Handle Gizmo create on POST.
@@ -47,7 +54,7 @@ exports.gizmo_create_post = async function(req, res) {
     res.status(500);
     res.send(`{"error": ${err}}`);
     }
-   };
+};
 // Handle Gizmo delete from on DELETE.
 exports.gizmo_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Gizmo delete DELETE ' + req.params.id);
