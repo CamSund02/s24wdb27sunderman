@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  - var results = [{ gizmo_name: "drone", functionality: "Fly around and take pictures", price: 500 },{ gizmo_name: "camera", functionality: "Take nice pictures", price: 2000 },{ gizmo_name: "electric skateboard", functionality: "Ride around", price: 300 }]
-
+  //- var results = [{ gizmo_name: "drone", functionality: "Fly around and take pictures", price: 500 },{ gizmo_name: "camera", functionality: "Take nice pictures", price: 2000 },{ gizmo_name: "electric skateboard", functionality: "Ride around", price: 300 }]
+  - let items = results
   .container-fluid
     .row
       each result in results
