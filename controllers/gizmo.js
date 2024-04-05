@@ -68,6 +68,19 @@ exports.gizmo_delete = async function(req, res) {
     }
 };
 // Handle Gizmo update form on PUT.
-exports.gizmo_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: Gizmo update PUT' + req.params.id);
+exports.gizmo_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Gizmo.findById( req.params.id)
+        // Do updates of properties
+        if(req.body.gizmo_name)toUpdate.gizmo_name = req.body.gizmo_name;
+        if(req.body.price) toUpdate.price = req.body.price;
+        if(req.body.functionality) toUpdate.functionality = req.body.functionality;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id}failed`);
+    }
 };
