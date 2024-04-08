@@ -2,19 +2,31 @@ var express = require('express');
 const gizmo_controlers= require('../controllers/gizmo');
 var router = express.Router();
 
+//is this supposed to be here
+//I think so
+const secured = (req, res, next) => {
+  if (req.user){
+  return next();
+  }
+  res.redirect("/login");
+}
+
 /* GET gizmos */
 router.get('/', gizmo_controlers.gizmo_view_all_Page );
 
 /* GET detail gizmo page */
 router.get('/detail', gizmo_controlers.gizmo_view_one_Page);
 
-/* GET create costume page */
+/* GET create gizmo page */
 router.get('/create', gizmo_controlers.gizmo_create_Page);
 
-/* GET create update page */
-router.get('/update', gizmo_controlers.gizmo_update_Page);
 
-/* GET delete costume page */
+
+/* GET update gizmo page */
+router.get('/update', secured, gizmo_controlers.gizmo_update_Page);
+
+
+/* GET delete gizmo page */
 router.get('/delete', gizmo_controlers.gizmo_delete_Page);
 
 

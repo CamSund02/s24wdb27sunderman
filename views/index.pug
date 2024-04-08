@@ -1,37 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p This is a change to the Pug file #{title}
-  button(type="button", class="btn btn-secondary", onclick="double()") Press Me
-  div#double Two to the power #{power} is #{value}.
-
-
-  //- Class: gizmo
-  //- Attributes/Types:
-  //-   gizmo_name (string)
-  //-   functionality (string)
-  //-   price (number)
-  
-  //- var results = [{ gizmo_name: "drone", functionality: "Fly around and take pictures", price: 500 },{ gizmo_name: "camera", functionality: "Take nice pictures", price: 2000 },{ gizmo_name: "electric skateboard", functionality: "Ride around", price: 300 }]
-
-  //.container-fluid
-  //  .row
-  //   each result in results
-  //      .col-sm-2
-  //        .search-result
-  //          h3 #{result.gizmo_name}
-  //          p Functionality: #{result.functionality}
-  //          p Price: $#{result.price}
-
-  script.
-    var value = 2;
-    var power = 1;
-
-    function double() {
-        power += 1;
-        value *= 2;
-        document.getElementById('double').innerText = "Two to the power " + power + " is " + value + ".";
-    }
-
-  a(href="/gizmo") GIZMO
+ if (!user)
+  a(href="/login") Login
+  br
+  a(href="/register") Register
+ if (user)
+  p You are currently logged in as #{user.username}
+  a(href="/gizmo") Take me to gizmo
+  br
+  a(href="/logout") Logout
