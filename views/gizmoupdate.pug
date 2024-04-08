@@ -1,0 +1,43 @@
+extends layout
+block content
+ h1= title
+ 
+ - let gizmoid = toShow._id
+ - let gizmo_name = toShow.gizmo_name
+ - let gizmofunctionality = toShow.functionality
+ - let gizmoprice = toShow.price
+
+ div.row(class='mb-2')
+  div.mr-1 ID is
+  div #{gizmoid}
+  
+ - let actionid = "/resource/gizmo/" + gizmoid
+ form(id='GizmoForm', action=actionid, method="PUT")
+  div.form-group
+   label.gizmoAttr(for='gizmo_name') Gizmo name
+   input#gizmo_name(type='text', name='gizmo_name', value=gizmo_name)
+  div.form-group
+   label.gizmoAttr(for='functionality') Gizmo functionality
+   input#functionality(type='text', name='functionality', value=gizmofunctionality)
+  div.form-group
+   label.gizmoAttr(for='price') Gizmo price
+   input#price(type='number', name='price', value=gizmoprice)
+  input(type="submit")
+
+ script.
+  document.forms['GizmoForm'].addEventListener('submit', (event) => {
+   event.preventDefault();
+   // TODO do something here to show user that form is being submitted
+   fetch(event.target.action, {
+    method: 'PUT',
+    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+   }).then((resp) => {
+    return resp.json(); // or resp.text() or whatever the server sends
+   }).then((body) => {
+    alert("Save succeeded");
+    // TODO handle body
+   }).catch((error) => {
+    // TODO handle error
+    alert("Save failed " + error);
+   });
+  });

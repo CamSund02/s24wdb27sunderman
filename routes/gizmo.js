@@ -11,7 +11,8 @@ router.get('/detail', gizmo_controlers.gizmo_view_one_Page);
 /* GET create costume page */
 router.get('/create', gizmo_controlers.gizmo_create_Page);
 
-
+/* GET create update page */
+router.get('/update', gizmo_controlers.gizmo_update_Page);
 
 
 /* idk if this is supposed to be here still
