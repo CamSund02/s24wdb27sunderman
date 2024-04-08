@@ -15,19 +15,16 @@ const secured = (req, res, next) => {
 router.get('/', gizmo_controlers.gizmo_view_all_Page );
 
 /* GET detail gizmo page */
-router.get('/detail', gizmo_controlers.gizmo_view_one_Page);
+router.get('/detail', secured, gizmo_controlers.gizmo_view_one_Page);
 
 /* GET create gizmo page */
-router.get('/create', gizmo_controlers.gizmo_create_Page);
-
-
+router.get('/create', secured, gizmo_controlers.gizmo_create_Page);
 
 /* GET update gizmo page */
 router.get('/update', secured, gizmo_controlers.gizmo_update_Page);
 
-
 /* GET delete gizmo page */
-router.get('/delete', gizmo_controlers.gizmo_delete_Page);
+router.get('/delete', secured, gizmo_controlers.gizmo_delete_Page);
 
 
 
