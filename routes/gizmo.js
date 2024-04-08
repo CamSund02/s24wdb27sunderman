@@ -8,6 +8,11 @@ router.get('/', gizmo_controlers.gizmo_view_all_Page );
 /* GET detail gizmo page */
 router.get('/detail', gizmo_controlers.gizmo_view_one_Page);
 
+/* GET create costume page */
+router.get('/create', gizmo_controlers.gizmo_create_Page);
+
+
+
 
 /* idk if this is supposed to be here still
  GET gizmo page. 
