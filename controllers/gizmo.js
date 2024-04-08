@@ -84,3 +84,19 @@ exports.gizmo_update_put = async function(req, res) {
         res.send(`{"error": ${err}: Update for id ${req.params.id}failed`);
     }
 };
+
+
+//Added in Assignment 14 part 4 sub 2
+// Handle a show one view with id specified by query
+exports.gizmo_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+        result = await Gizmo.findById( req.query.id)
+        res.render('gizmodetail',
+        { title: 'Gizmo Detail', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
