@@ -1,13 +1,16 @@
 extends layout
 
 block content
-  //- var results = [{ gizmo_name: "drone", functionality: "Fly around and take pictures", price: 500 },{ gizmo_name: "camera", functionality: "Take nice pictures", price: 2000 },{ gizmo_name: "electric skateboard", functionality: "Ride around", price: 300 }]
-  - let items = results
-  .container-fluid
-    .row
-      each result in results
-        .col-lg-4.col-md-6.col-sm-12
-          .search-result
-            h3 #{result.gizmo_name}
-            p Functionality: #{result.functionality}
-            p Price: $#{result.price}
+ //- var results = [{ gizmo_name: "drone", functionality: "Fly around and take pictures", price: 500 },{ gizmo_name: "camera", functionality: "Take nice pictures", price: 2000 },{ gizmo_name: "electric skateboard", functionality: "Ride around", price: 300 }]
+ - let items = results
+ div(class="container-fluid")
+  div(class="row m-1")
+   each item in items
+    - let destination = `dispatch(\"/gizmo/update/?id=${item._id}\")`
+    div(class="row-sm-2", class="m-1") Item #{item.gizmo_name}(#{item.functionality}) is #{item.price}
+     button.btn(class="btn-primary ml-1", onclick= destination) Update
+
+ script.
+  function dispatch(path){
+    window.location.href=path
+  }
