@@ -14,6 +14,10 @@ router.get('/create', gizmo_controlers.gizmo_create_Page);
 /* GET create update page */
 router.get('/update', gizmo_controlers.gizmo_update_Page);
 
+/* GET delete costume page */
+router.get('/delete', gizmo_controlers.gizmo_delete_Page);
+
+
 
 /* idk if this is supposed to be here still
  GET gizmo page. 
